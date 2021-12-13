@@ -1,0 +1,19 @@
+
+.chat
+{
+  margin-top: 50px ;
+  border-radius: 5px;
+  min-height:80%;
+  background-color: white;
+  width:80%;
+  margin-left: 100px;
+}
+.chats
+{
+    margin-left: 20px;
+}
+.chats li
+{
+    padding-top: 10px;
+    font-size: 20px;
+}
