@@ -4,6 +4,7 @@ import { faMicrophone } from '@fortawesome/free-solid-svg-icons'
 import { faMicrophoneSlash } from '@fortawesome/free-solid-svg-icons'
 import { faVideo } from '@fortawesome/free-solid-svg-icons'
 import { faVideoSlash } from '@fortawesome/free-solid-svg-icons'
+import "./Controlarea.css"
 export default function Controlarea() {
     return (
         <div className='control-area'>
