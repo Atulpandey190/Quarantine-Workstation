@@ -1,9 +1,10 @@
 
-.icons
-{
- font-size: 3rem;
-}
 .icons-area
 {
  margin-left: 55px;
+ margin-top:500px;
+}
+.icon
+{
+    margin-left: 30px;
 }
