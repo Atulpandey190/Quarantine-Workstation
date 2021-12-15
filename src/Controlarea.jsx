@@ -1,6 +1,15 @@
 import React from 'react'
+<<<<<<< HEAD
 import './Controlarea.css'
 import { MicFill,MicMuteFill,GearFill,CameraVideoFill,CameraVideoOffFill } from 'react-bootstrap-icons';
+=======
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMicrophone } from '@fortawesome/free-solid-svg-icons'
+import { faMicrophoneSlash } from '@fortawesome/free-solid-svg-icons'
+import { faVideo } from '@fortawesome/free-solid-svg-icons'
+import { faVideoSlash } from '@fortawesome/free-solid-svg-icons'
+import "./Controlarea.css"
+>>>>>>> 9f29e9d2bf41d649cdcedb1d8529d69adce0b8ba
 export default function Controlarea() {
     return (
         <div className='control-area'>
