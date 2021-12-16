@@ -1,0 +1,25 @@
+.player{
+    display:flex;
+    background-color: rgba(0, 0, 0, 0.9);
+    height:20vh;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.player-button{    
+    display:flex;
+    flex-direction: row;
+    color: white;
+    align-items: center;
+    justify-content: space-around;
+}
+.x{
+    padding:10px;
+}
+
+.volume-control{
+    width: 200px;
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-around;
+}

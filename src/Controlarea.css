@@ -1,10 +1,15 @@
-
-.icons-area
+.control-area
 {
- margin-left: 55px;
- margin-top:500px;
+    flex:1;
+    display:flex;
+    flex-direction: column;
+    width:20%;
+    height:100%;
 }
-.icon
-{
-    margin-left: 30px;
+.control-area >div {
+    background-color: green;
+    margin-top:auto;
+}
+.icon{
+    padding:1.5rem;
 }

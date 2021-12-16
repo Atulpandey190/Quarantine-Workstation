@@ -1,35 +1,30 @@
 .App
 {
-    height:100vh;
+    height:100vh;   
 }
 .upper-container
 {
+    background-color: violet;
     display: flex;
     width:100%;
-    min-height:40vh;
+    height:80vh;
 }
 .lower-container
 {
-    min-height: 20vh;
+    position: relative;
+    height: 20vh;
 }
 .room-members
 {
     background-color:yellow ;
     width:20%;
+    height:100%;
 }
-.music-area
-{
-    background-color: blue;
-    min-height: 10rem
-}
+
 .chatting-area
 {
     background: red;
     width:60%;
+    height:100%;
 
-}
-.control-area
-{
-    flex:1;
-    width:20%;
 }
