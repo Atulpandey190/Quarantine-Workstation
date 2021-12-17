@@ -1,10 +1,10 @@
 import React from 'react'
 import './MusicArea.css'
-
+import MusicPlayer from './MusicPlayer'
 export default function MusicArea() {
     return (
         <div className='music-area'>
-           <h1>This is music area</h1> 
+           <MusicPlayer></MusicPlayer>
         </div>
     )
 }

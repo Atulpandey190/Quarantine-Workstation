@@ -1,9 +1,15 @@
-
-.icons
+.control-area
 {
- font-size: 3rem;
+    flex:1;
+    display:flex;
+    flex-direction: column;
+    width:20%;
+    height:100%;
 }
-.icons-area
-{
- margin-left: 55px;
+.control-area >div {
+    background-color: green;
+    margin-top:auto;
+}
+.icon{
+    padding:1.5rem;
 }

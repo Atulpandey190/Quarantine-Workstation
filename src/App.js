@@ -13,7 +13,7 @@ function App() {
         <Controlarea className="control-area"/>
         </div>
         <div className='lower-container'>
-        <MusicArea className="music-area"/>
+          <MusicArea className="music-area"/>
         </div>
 
     </div>
