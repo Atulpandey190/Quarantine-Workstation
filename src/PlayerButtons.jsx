@@ -1,4 +1,5 @@
-import { PauseCircleFill,PlayCircleFill,SkipBackwardFill,SkipForwardFill,SkipEndCircleFill,SkipStartCircleFill} from 'react-bootstrap-icons';
+import React from 'react';
+import { PauseCircleFill,PlayCircleFill,SkipEndCircleFill,SkipStartCircleFill} from 'react-bootstrap-icons';
 
 const PlayerButtons = () => {
   return (
