@@ -3,10 +3,12 @@ import SearchComponent from "./SearchComponent";
 function ModalSearch(props) {
   return (
     <Modal
+    
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      animation
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">Search</Modal.Title>
@@ -16,11 +18,13 @@ function ModalSearch(props) {
           playingTrack={props.playingTrack}
           setPlayingTrack={props.setPlayingTrack}
           accessToken={props.accessToken}
+          toggleSearch={props.toggleSearch}
+          setToggleSearch={props.setToggleSearch}
         ></SearchComponent>
       </Modal.Body>
-      <Modal.Footer>
+      {/* <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
 }

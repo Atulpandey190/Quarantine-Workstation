@@ -2,19 +2,26 @@ import React, { useState, useEffect } from "react";
 import { Container, Form } from "react-bootstrap";
 import TrackSearchResult from "./TrackSearchResult";
 import SpotifyWebApi from "spotify-web-api-node";
+import Player from "./Player";
 const spotifyApi = new SpotifyWebApi({
   redirectUri: "http://localhost:3000",
   clientId: "ec5cc05742d84f3abadc11ea6b639f9c",
   clientSecret: "edbcb0b4cda94e67acf9f43e4d635618",
 });
 
-function SearchComponent({ playingTrack, setPlayingTrack, accessToken }) {
+function SearchComponent({
+  playingTrack,
+  setPlayingTrack,
+  accessToken,
+  toggleSearch,
+  setToggleSearch,
+}) {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
   function chooseTrack(track) {
     setPlayingTrack(track);
     setSearch("");
+    setToggleSearch(!toggleSearch);
   }
   useEffect(() => {
     if (!accessToken) return;
@@ -24,7 +31,7 @@ function SearchComponent({ playingTrack, setPlayingTrack, accessToken }) {
   useEffect(() => {
     if (!search) return setSearchResults([]);
     if (!accessToken) return;
-    console.log("i was called");
+    // console.log("i was called");
     let cancel = false;
     spotifyApi.searchTracks(search).then((res) => {
       if (cancel) return;
@@ -41,7 +48,7 @@ function SearchComponent({ playingTrack, setPlayingTrack, accessToken }) {
           return {
             artist: track.artists[0].name,
             title: track.name,
-            uri: track.uri,
+            uri: "spotify:artist:0TnOYISbd1XYRBk9myaseg",
             albumUrl: smallestAlbumImage.url,
           };
         })
@@ -51,7 +58,6 @@ function SearchComponent({ playingTrack, setPlayingTrack, accessToken }) {
     return () => (cancel = true);
   }, [search, accessToken]);
 
- 
   return (
     <Container className="d-flex flex-column py-2" style={{ height: "100vh" }}>
       <Form.Control
