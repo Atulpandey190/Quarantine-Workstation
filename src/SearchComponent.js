@@ -48,7 +48,7 @@ function SearchComponent({
           return {
             artist: track.artists[0].name,
             title: track.name,
-            uri: "spotify:artist:0TnOYISbd1XYRBk9myaseg",
+            uri: track.uri,
             albumUrl: smallestAlbumImage.url,
           };
         })

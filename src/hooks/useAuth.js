@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useAuth = (code ) => {
+const useAuth = (code) => {
   const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
@@ -17,11 +17,11 @@ const useAuth = (code ) => {
         setAccessToken(res.data.accessToken);
         setRefreshToken(res.data.refreshToken);
         setExpiresIn(res.data.expiresIn);
-        window.history.pushState({}, null, "/");
+        window.history.pushState({}, null, "/dashboard");
       })
       .catch((err) => {
         console.log(err);
-        window.location = "/";
+        window.location = "/dashboard";
       });
   }, [code]);
 
@@ -40,7 +40,7 @@ const useAuth = (code ) => {
 
         .catch((err) => {
           console.log(err);
-          window.location = "/";
+          window.location = "/dashboard";
         });
     }, (expiresIn - 60) * 1000);
 
