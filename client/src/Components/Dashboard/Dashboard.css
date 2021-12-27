@@ -1,0 +1,31 @@
+.upper-container
+{
+    display: flex;
+    width:100%;
+    min-height:40vh;
+}
+.lower-container
+{
+    min-height: 20vh;
+}
+.room-members
+{
+    background-color:yellow ;
+    width:20%;
+}
+.music-area
+{
+    background-color: blue;
+    min-height: 10rem
+}
+.chatting-area
+{
+    background: red;
+    width:60%;
+
+}
+.control-area
+{
+    flex:1;
+    width:20%;
+}

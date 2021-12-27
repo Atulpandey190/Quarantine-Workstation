@@ -1,0 +1,16 @@
+.home
+{
+    padding:0;
+    margin:0;
+    height:100%;
+    width:100%;
+
+}
+.login {
+    background: pink;
+    color: #212121;
+    font-family: "Open Sans", sans-serif;
+    place-items: center;
+  }
+  
+  @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
