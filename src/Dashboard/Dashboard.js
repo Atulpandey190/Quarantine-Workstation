@@ -1,7 +1,7 @@
-import Roommembers from "./Roommembers";
-import MusicArea from "./MusicArea";
-import Chattingarea from "./Chattingarea";
-import Controlarea from "./Controlarea";
+import Roommembers from "./components/RoomMembers/Roommembers";
+import MusicArea from "./components/MusicArea/MusicArea";
+import Chattingarea from "./components/ChattingArea/Chattingarea";
+import { Controlarea } from "./components/ControlArea/Controlarea";
 import Button from "react-bootstrap/Button";
 import "./Dashboard.css";
 const code = new URLSearchParams(window.location.search).get("code");
@@ -12,7 +12,7 @@ const Dashboard = (props) => {
       <div className="upper-container">
         <Roommembers className="room-members" />
         <Chattingarea className="chatting-area" />
-        <Controlarea className="control-area" />
+        <Controlarea className="control-area" socket={props.socket} />
       </div>
       <div className="lower-container">
         {code ? (

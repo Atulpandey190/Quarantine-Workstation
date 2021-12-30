@@ -1,5 +1,4 @@
 import socketClient from "socket.io-client";
-
 const SERVER_PORT = 3001;
 const SERVER = `http://localhost:${SERVER_PORT}`;
 
@@ -8,7 +7,7 @@ const broadcastEventTypes = {
   GROUP_CALL_ROOMS: "GROUP_CALL_ROOMS",
 };
 
-let socket;
+export let socket = "";
 
 export const connectWithWebSocket = () => {
   socket = socketClient(SERVER);
@@ -17,18 +16,19 @@ export const connectWithWebSocket = () => {
     console.log("Succesfully connected with wss server");
     console.log(socket.id);
   });
-
-  socket.on("broadcast", (data) => {
-    handleBroadcastEvents(data);
-  });
 };
 
 export const registerNewUser = (username) => {
   socket.emit("register-new-user", {
-    username: "Shrey",
+    username: username,
     socketId: socket.id,
   });
-  socket.on("receive", (message) => {
+};
+export const sendMessage = (message) => {
+  socket.emit("send_message", message);
+};
+export const receiveMessage = (message) => {
+  socket.on("receive_message", (data) => {
     console.log(message);
   });
 };
@@ -39,6 +39,7 @@ const handleBroadcastEvents = (data) => {
       const activeUsers = data.activeUsers.filter(
         (activeUser) => activeUser.socketId !== socket.id
       );
+
       break;
     default:
       break;

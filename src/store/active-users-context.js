@@ -1,7 +1,7 @@
 import React from "react";
 
 const ActiveUsersContext = React.createContext({
-  activeUsers: [],
+  activeUsersList: [],
 });
 
 export default ActiveUsersContext;

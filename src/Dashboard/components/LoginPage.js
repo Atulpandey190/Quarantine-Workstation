@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { registerNewUser } from "./utils/wssConnection/wssConnection";
+import { registerNewUser } from "../../utils/wssConnection/wssConnection";
 
 const LoginPage = ({ setSaveUsername }) => {
   const [username, setUsername] = useState("");

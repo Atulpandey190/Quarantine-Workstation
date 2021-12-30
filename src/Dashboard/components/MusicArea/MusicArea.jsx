@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./MusicArea.css";
 import MusicPlayer from "./MusicPlayer";
-import useAuth from "./hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
 
 import ModalSearch from "./ModalSearch";
 import Button from "react-bootstrap/Button";
