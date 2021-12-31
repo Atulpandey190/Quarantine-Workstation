@@ -1,4 +1,7 @@
 import socketClient from "socket.io-client";
+import store from "../../store/store";
+import * as dashboardActions from "../../store/actions/dashboardActions";
+
 const SERVER_PORT = 3001;
 const SERVER = `http://localhost:${SERVER_PORT}`;
 
@@ -15,6 +18,10 @@ export const connectWithWebSocket = () => {
   socket.on("connection", () => {
     console.log("Succesfully connected with wss server");
     console.log(socket.id);
+  });
+
+  socket.on("broadcast", (data) => {
+    handleBroadcastEvents(data);
   });
 };
 
@@ -39,7 +46,7 @@ const handleBroadcastEvents = (data) => {
       const activeUsers = data.activeUsers.filter(
         (activeUser) => activeUser.socketId !== socket.id
       );
-
+      store.dispatch(dashboardActions.setActiveUsers(activeUsers));
       break;
     default:
       break;
