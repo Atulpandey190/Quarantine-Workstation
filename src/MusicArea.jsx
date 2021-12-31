@@ -1,10 +1,50 @@
-import React from 'react'
-import './MusicArea.css'
-import MusicPlayer from './MusicPlayer'
-export default function MusicArea() {
-    return (
-        <div className='music-area'>
-           <MusicPlayer></MusicPlayer>
-        </div>
-    )
+import React, { useState, useEffect } from "react";
+import "./MusicArea.css";
+import MusicPlayer from "./MusicPlayer";
+import SpotifyWebApi from "spotify-web-api-node";
+import useAuth from "./hooks/useAuth";
+import SearchComponent from "./SearchComponent";
+import ModalSearch from "./ModalSearch";
+import Button from 'react-bootstrap/Button';
+const spotifyApi = new SpotifyWebApi({
+  redirectUri: "http://localhost:3000",
+  clientId: process.env.REACT_APP_CLIENT_ID,
+  clientSecret: process.env.REACT_APP_CLIENT_SECRET,
+});
+
+export default function MusicArea({ code }) {
+  const accessToken = useAuth(code);
+  const [toggleSearch, setToggleSearch] = useState(false);
+  const [playingTrack, setPlayingTrack] = useState();
+
+  const searchButtonClickHandler = () => {
+    setToggleSearch(!toggleSearch);
+  };
+  return (
+    <>
+      <div className="music-area">
+        <Button variant="outline-dark" onClick={searchButtonClickHandler}>
+          {" "}
+          Search for a Song / Artist{" "}
+        </Button>
+
+        <ModalSearch
+          accessToken={accessToken}
+          playingTrack={playingTrack}
+          setPlayingTrack={setPlayingTrack}
+          toggleSearch={toggleSearch}
+          setToggleSearch={setToggleSearch}
+          show={toggleSearch}
+          onHide={() => setToggleSearch(false)}
+
+        />
+
+        <MusicPlayer
+          accessToken={accessToken}
+          playingTrack={playingTrack}
+          setPlayingTrack={setPlayingTrack}
+        ></MusicPlayer>
+      </div>
+    </>
+  );
 }
