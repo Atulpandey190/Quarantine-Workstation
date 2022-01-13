@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import ActiveUsersListItem from "./ActiveUsersListItem";
 
 const ActiveUsersList = () => {
   const dashboardState = useSelector((state) => state.dashboardReducer);
@@ -8,10 +9,12 @@ const ActiveUsersList = () => {
   return (
     <>
       <div>
-        {activeUsers &&
-          activeUsers.map((activeUser, index) => {
-            return <h3 key={index}>{activeUser.username}</h3>;
-          })}
+        {activeUsers.map((activeUser) => (
+          <ActiveUsersListItem
+            key={activeUser.socketId}
+            activeUser={activeUser.username}
+          />
+        ))}
       </div>
     </>
   );

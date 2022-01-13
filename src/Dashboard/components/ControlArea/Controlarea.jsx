@@ -6,7 +6,6 @@ import ActiveUsersList from "../ActiveUsers/ActiveUsersList";
 export function Controlarea({ socket }) {
   return (
     <div className="control-area">
-      <h1>This is the control area</h1>
       <ActiveUsersList />
       <div className="icons-area">
         <MicFill className=" first" size={25} />

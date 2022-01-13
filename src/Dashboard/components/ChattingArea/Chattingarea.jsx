@@ -2,9 +2,12 @@ import "./Chattingarea.css";
 import { useState } from "react";
 import { socketID, socket } from "../../../utils/socket";
 import Chat from "../Chat/Chat";
+import { useDispatch } from "react-redux";
+import { setGroupCallRooms } from "../../../store/actions/dashboardActions";
 function Chattingarea({ curruser }) {
   const [room, setRoom] = useState("");
   const [showChat, setshowChat] = useState(false);
+  const dispatch = useDispatch();
 
   const joinRoom = () => {
     if (curruser != "" && room !== "") {
@@ -23,7 +26,6 @@ function Chattingarea({ curruser }) {
             type="text"
             placeholder="Room Code...."
             onChange={(event) => {
-              console.log(event.target.value);
               setRoom(event.target.value);
             }}
           ></input>
