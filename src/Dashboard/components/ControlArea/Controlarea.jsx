@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState } from "react";
 import "./Controlarea.css";
 import { MicFill, GearFill, CameraVideoFill } from "react-bootstrap-icons";
 import ActiveUsersList from "../ActiveUsers/ActiveUsersList";
-
 export function Controlarea({ socket }) {
   return (
     <div className="control-area">

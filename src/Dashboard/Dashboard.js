@@ -1,20 +1,26 @@
-import Roommembers from "./components/RoomMembers/Roommembers";
+import * as webRTCGroupCallHandler from "../utils/webRTC/webRTCGroupCallHandler";
 import MusicArea from "./components/MusicArea/MusicArea";
 import Chattingarea from "./components/ChattingArea/Chattingarea";
 import { Controlarea } from "./components/ControlArea/Controlarea";
 import Button from "react-bootstrap/Button";
 import "./Dashboard.css";
 import { useSelector } from "react-redux";
+import Room from "./components/Room/Room";
+import { useEffect } from "react";
+
 const code = new URLSearchParams(window.location.search).get("code");
 const Dashboard = (props) => {
   const { AUTH_URL } = props;
   const dashboardState = useSelector((state) => state.dashboardReducer);
-  console.log(dashboardState.username);
+  const callState = useSelector((state) => state.groupcallReducer);
+  useEffect(() => {
+    webRTCGroupCallHandler.connectWithMyPeer();
+  }, []);
   return (
     <>
       <h1>{dashboardState.username}</h1>
       <div className="upper-container">
-        <Roommembers className="room-members" />
+        <Room callState={callState} />
         <Chattingarea
           className="chatting-area"
           curruser={dashboardState.username}
