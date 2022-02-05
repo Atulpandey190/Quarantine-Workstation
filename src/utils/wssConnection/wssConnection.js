@@ -8,7 +8,7 @@ const SERVER = `http://localhost:${SERVER_PORT}`;
 
 const broadcastEventTypes = {
   ACTIVE_USERS: "ACTIVE_USERS",
-  GROUP_CALL_ROOMS: "GROUP_CALL_ROOMS",
+  GROUP_CALL_ROOM: "GROUP_CALL_ROOM",
   ROOM_MEMBERS: "ROOM_MEMBERS",
 };
 
@@ -40,8 +40,9 @@ export const registerNewUser = (username) => {
 export const userLeftGroupCall = (data) => {
   socket.emit("group-call-user-left", data);
 };
-export const sendMessage = (message) => {
-  socket.emit("send_message", message);
+export const sendMessage = (data) => {
+  console.log(data);
+  socket.emit("send_message", data);
 };
 export const receiveMessage = (message) => {
   socket.on("receive_message", (data) => {

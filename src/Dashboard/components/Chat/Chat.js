@@ -1,23 +1,25 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import * as webRTCGroupCallHandler from "../../../utils/webRTC/webRTCGroupCallHandler";
 
 function Chat({ socket, username, room }) {
+  const dashboardState = useSelector((state) => state.dashboardReducer);
   const [currentMessage, setcurrentMessage] = useState("");
   const [messageList, setmessageList] = useState([]);
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
       const messageData = {
-        room: room,
-        author: username,
+        room: dashboardState.groupCallRoom,
+        author: dashboardState.username,
         message: currentMessage,
         time:
           new Date(Date.now()).getHours() +
           ":" +
           new Date(Date.now()).getMinutes(),
       };
-      const res = await socket.emit("send_message", messageData);
-      console.log(res);
+      webRTCGroupCallHandler.sendMessageThroughSocket(messageData);
       setmessageList((list) => [...list, messageData]);
     }
   };
@@ -25,22 +27,31 @@ function Chat({ socket, username, room }) {
   useEffect(() => {
     console.log(socket);
     socket.on("recieve_message", (data) => {
+      
+      if (dashboardState.username != data.author)
+        setmessageList((list) => [...list, data]);
+    });
+
+    socket.on("new_member", (data) => {
       console.log(data);
-      setmessageList((list) => [...list, data]);
     });
   }, [socket]);
 
   return (
     <div className="chat-window">
       <div className="chat-header">
-        <p>Live Chat</p>
+        <p>Group Room : {dashboardState.groupCallRoom}</p>
       </div>
       <div className="chat-body">
         {messageList.map((messageContent) => {
           return (
             <div
               className="message"
-              id={username !== messageContent.author ? "you" : "other"}
+              id={
+                dashboardState.username != messageContent.author
+                  ? "you"
+                  : "other"
+              }
             >
               <div>
                 <div className="message-content">

@@ -3,7 +3,8 @@ import * as dashboardActions from "../actions/dashboardActions";
 const initState = {
   username: "",
   activeUsers: [],
-  groupCallRooms: [],
+  groupCallRoom: null,
+  messageList:[],
 };
 //Creating intial State for a Client User
 
@@ -19,10 +20,10 @@ const reducer = (state = initState, action) => {
         ...state,
         activeUsers: action.activeUsers,
       };
-    case dashboardActions.DASHBOARD_SET_GROUP_CALL_ROOMS:
+    case dashboardActions.DASHBOARD_SET_GROUP_CALL_ROOM:
       return {
         ...state,
-        groupCallRooms: action.groupCallRooms,
+        groupCallRoom: action.groupCallRoom,
       };
     default:
       return state;

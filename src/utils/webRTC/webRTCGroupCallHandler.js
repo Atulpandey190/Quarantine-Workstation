@@ -39,6 +39,9 @@ export const leaveGroupCall = () => {
   clearGroupData();
 };
 
+export const sendMessageThroughSocket = (messageData) => {
+  wss.sendMessage(messageData);
+};
 export const clearGroupData = () => {
   store.dispatch(clearGroupCallData());
 };
