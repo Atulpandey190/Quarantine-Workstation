@@ -27,13 +27,9 @@ function Chat({ socket, username, room }) {
   useEffect(() => {
     console.log(socket);
     socket.on("recieve_message", (data) => {
-      
+      console.log("Recieved")
       if (dashboardState.username != data.author)
         setmessageList((list) => [...list, data]);
-    });
-
-    socket.on("new_member", (data) => {
-      console.log(data);
     });
   }, [socket]);
 

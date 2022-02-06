@@ -13,6 +13,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   const handleSubmitButtonPressed = () => {
+    console.log(dashboardState);
     registerNewUser(dashboardState.username);
     navigate("/dashboard");
   };

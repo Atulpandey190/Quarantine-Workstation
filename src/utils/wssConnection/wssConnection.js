@@ -25,12 +25,17 @@ export const connectWithWebSocket = () => {
   socket.on("broadcast", (data) => {
     handleBroadcastEvents(data);
   });
-  socket.on("group-call-join-request", (data) => {
-    //console.log("Group Call Request");
-    //webRTCGroupCallHandler.connectToNewUser(data);
+  
+  socket.on("new_member", (data) => {
+    console.log("Group Call Request");
+    console.log(data);
+    webRTCGroupCallHandler.connectToNewUser(data);
   });
 };
-
+export const joinNewRoom = (data) => {
+  console.log({...data} );
+  socket.emit("join_room", { ...data });
+};
 export const registerNewUser = (username) => {
   socket.emit("register-new-user", {
     username: username,

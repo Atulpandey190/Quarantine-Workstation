@@ -5,6 +5,7 @@ import { socket } from "../../../utils/socket";
 import Chat from "../Chat/Chat";
 import { useDispatch } from "react-redux";
 import { setGroupCallRoom } from "../../../store/actions/dashboardActions";
+import * as webRTCGroupCallHandler from "../../../utils/webRTC/webRTCGroupCallHandler";
 import { useEffect } from "react";
 function Chattingarea() {
   const [room, setRoom] = useState("");
@@ -20,15 +21,19 @@ function Chattingarea() {
     }
   };
   useEffect(() => {
-    if (dashboardState.username !== "" &&  dashboardState.groupCallRoom !== null) {
+    if (
+      dashboardState.username !== "" &&
+      dashboardState.groupCallRoom !== null
+    ) {
       setshowChat(true);
       console.log(dashboardState.groupCallRoom);
-      socket.emit("join_room", {
+      //Create new Group Call Room
+      webRTCGroupCallHandler.newGroupCallRoom({
         username: dashboardState.username,
         room: dashboardState.groupCallRoom,
       });
     }
-  }, [dashboardState.username,dashboardState.groupCallRoom]);
+  }, [dashboardState.username, dashboardState.groupCallRoom]);
   return (
     <div className="Chattingarea">
       {!showChat ? (

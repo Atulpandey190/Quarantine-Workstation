@@ -15,16 +15,19 @@ const Dashboard = (props) => {
   const callState = useSelector((state) => state.groupcallReducer);
   useEffect(() => {
     webRTCGroupCallHandler.connectWithMyPeer();
+    webRTCGroupCallHandler.getLocalStream();
   }, []);
+  
   return (
     <>
       <h1>{dashboardState.username}</h1>
       <div className="upper-container">
-        <Room callState={callState} />
+        <Room {...callState} />
         <Chattingarea
           className="chatting-area"
           curruser={dashboardState.username}
         />
+
         <Controlarea className="control-area" socket={props.socket} />
       </div>
       <div className="lower-container">

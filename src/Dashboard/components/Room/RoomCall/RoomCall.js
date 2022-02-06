@@ -1,36 +1,13 @@
 import React from "react";
-import * as webRTCGroupCallHandler from "../../../../utils/webRTC/webRTCGroupCallHandler";
-
+import RoomCallVideo from "./RoomCallVideo";
+import LocalVideoView from "../../LocalVideoView/LocalVideoView";
 const RoomCall = (props) => {
-  const { callState, localStream, groupCallActive } = props.callState;
+  const {localStream, groupCallActive } = props;
 
-  const createRoom = (e) => {
-    e.preventDefault();
-    webRTCGroupCallHandler.createNewGroupCall();
-  };
-  const leaveRoom = (e) => {
-    e.preventDefault();
-    webRTCGroupCallHandler.leaveGroupCall();
-  };
   return (
     <>
-      {!groupCallActive && (
-        <button
-          onClick={(e) => {
-            createRoom(e);
-          }}
-        >
-          Join Group Call
-        </button>
-      )}
-      {groupCallActive && (
-        <button
-          onClick={(e) => {
-            leaveRoom(e);
-          }}
-        >
-          Leave Group Call
-        </button>
+      {groupCallActive && localStream && (
+        <LocalVideoView localStream={localStream} />
       )}
     </>
   );
