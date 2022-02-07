@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./MusicArea.css";
 import MusicPlayer from "./MusicPlayer";
-import SpotifyWebApi from "spotify-web-api-node";
-import useAuth from "./hooks/useAuth";
-import SearchComponent from "./SearchComponent";
+import useAuth from "../../../hooks/useAuth";
+
 import ModalSearch from "./ModalSearch";
-import Button from 'react-bootstrap/Button';
-const spotifyApi = new SpotifyWebApi({
-  redirectUri: "http://localhost:3000",
-  clientId: process.env.REACT_APP_CLIENT_ID,
-  clientSecret: process.env.REACT_APP_CLIENT_SECRET,
-});
+import Button from "react-bootstrap/Button";
 
 export default function MusicArea({ code }) {
   const accessToken = useAuth(code);
@@ -36,7 +30,6 @@ export default function MusicArea({ code }) {
           setToggleSearch={setToggleSearch}
           show={toggleSearch}
           onHide={() => setToggleSearch(false)}
-
         />
 
         <MusicPlayer

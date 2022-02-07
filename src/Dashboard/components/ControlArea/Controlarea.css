@@ -7,9 +7,9 @@
     height:100%;
 }
 .control-area >div {
-    background-color: green;
     margin-top:auto;
+    display: flex;
+    justify-content: space-around;
+    height: 2rem;
 }
-.icon{
-    padding:1.5rem;
-}
+
