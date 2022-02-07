@@ -2,7 +2,6 @@ import * as webRTCGroupCallHandler from "../utils/webRTC/webRTCGroupCallHandler"
 import MusicArea from "./components/MusicArea/MusicArea";
 import Chattingarea from "./components/ChattingArea/Chattingarea";
 import { Controlarea } from "./components/ControlArea/Controlarea";
-import Button from "react-bootstrap/Button";
 import "./Dashboard.css";
 import { useSelector } from "react-redux";
 import Room from "./components/Room/Room";
@@ -14,26 +13,40 @@ const Dashboard = (props) => {
   const dashboardState = useSelector((state) => state.dashboardReducer);
   const callState = useSelector((state) => state.groupcallReducer);
   useEffect(() => {
-    webRTCGroupCallHandler.connectWithMyPeer();
-    webRTCGroupCallHandler.getLocalStream();
+    //Uncomment When Done!!!
+    //webRTCGroupCallHandler.connectWithMyPeer();
+    //webRTCGroupCallHandler.getLocalStream();
   }, []);
 
   return (
     <>
-      <h1>{dashboardState.username}</h1>
-      <div className="upper-container">
-        <Room {...callState} />
-        <Chattingarea
-          className="chatting-area"
-          curruser={dashboardState.username}
-        />
 
+      <div className="main-container">
+    
+        <div className="upper-container">
+        <Chattingarea
+            className="chatting-area"
+            curruser={dashboardState.username}
+          />        
+
+        </div>
+        <div className="Video-Section">
+        <h1>Join A Chat for video!! </h1>
+        
+        <div className="controlarea-container">
+        
         <Controlarea
-          className="control-area"
-          socket={props.socket}
-          localStream={callState.localStream}
-        />
+            className="control-area"
+            socket={props.socket}
+            localStream={callState.localStream}
+          />
+        </div>
+
+
+        </div>
+        
       </div>
+      {/*
       <div className="lower-container">
         {code ? (
           <MusicArea className="music-area" code={code} />
@@ -46,7 +59,7 @@ const Dashboard = (props) => {
             Login Spotify
           </Button>
         )}
-      </div>
+        </div>*/}
     </>
   );
 };

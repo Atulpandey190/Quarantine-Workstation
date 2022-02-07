@@ -4,7 +4,7 @@ import { connectWithWebSocket } from "./utils/wssConnection/wssConnection";
 import { socket } from "./utils/wssConnection/wssConnection";
 
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import Dashboard from "./Dashboard/Dashboard";
 import Home from "./Home/Home";
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
