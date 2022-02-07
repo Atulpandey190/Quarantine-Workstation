@@ -34,18 +34,19 @@ export const connectWithMyPeer = () => {
     call.answer(store.getState().groupcallReducer.localStream);
     call.on("stream", (incomingStream) => {
       console.log("Stream Came");
-      /**const streams = store.getState().call.groupCallStreams;
+      const streams = store.getState().groupcallReducer.groupCallStreams;
+      console.log(streams);
       const stream = streams.find((stream) => stream.id === incomingStream.id);
 
       if (!stream) {
         addVideoStream(incomingStream);
-      }**/
+      }
     });
   });
 };
 export const newGroupCallRoom = (data) => {
   const localStream = store.getState().groupcallReducer.localStream;
-  groupCallRoomId = data.RoomId;
+  groupCallRoomId = data.roomId;
 
   wss.joinNewRoom({
     ...data,
@@ -75,20 +76,20 @@ export const connectToNewUser = (data) => {
 
   call.on("stream", (incomingStream) => {
     console.log("Stream Came");
-    /**  const streams = store.getState().groupcallReducer.groupCallStreams;
+    const streams = store.getState().groupcallReducer.groupCallStreams;
+    console.log(streams);
     const stream = streams.find((stream) => stream.id === incomingStream.id);
 
     if (!stream) {
       addVideoStream(incomingStream);
     }
-    */
   });
 };
 
 const addVideoStream = (incomingStream) => {
   console.log(incomingStream);
   const groupCallStreams = [
-    ...store.getState().call.groupCallStreams,
+    ...store.getState().groupcallReducer.groupCallStreams,
     incomingStream,
   ];
 

@@ -2,8 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import * as webRTCGroupCallHandler from "../../../utils/webRTC/webRTCGroupCallHandler";
-
-function Chat({ socket, username, room }) {
+import { socket } from "../../../utils/wssConnection/wssConnection";
+function Chat({ username, room }) {
+  console.log(username, room);
   const dashboardState = useSelector((state) => state.dashboardReducer);
   const [currentMessage, setcurrentMessage] = useState("");
   const [messageList, setmessageList] = useState([]);
@@ -26,12 +27,12 @@ function Chat({ socket, username, room }) {
 
   useEffect(() => {
     console.log(socket);
-    socket.on("recieve_message", (data) => {
-      console.log("Recieved")
+    socket.on("receive_message", (data) => {
+      console.log("Recieved");
       if (dashboardState.username != data.author)
         setmessageList((list) => [...list, data]);
     });
-  }, [socket]);
+  }, [dashboardState.username, socket]);
 
   return (
     <div className="chat-window">
@@ -67,7 +68,6 @@ function Chat({ socket, username, room }) {
           type="text"
           placeholder="Write your message here"
           onChange={(event) => {
-            console.log(event.target.value);
             setcurrentMessage(event.target.value);
           }}
         ></input>

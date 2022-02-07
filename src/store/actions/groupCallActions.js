@@ -11,6 +11,9 @@ export const CALL_CLEAR_GROUP_CALL_DATA = "CALL.CLEAR_GROUP_CALL_DATA";
 export const CALL_SET_GROUP_CALL_LOCAL_STREAM =
   "CALL.SET_GROUP_CALL_LOCAL_STREAM";
 export const CALL_SET_GROUP_CALL_STREAMS = "CALL.SET_GROUP_CALL_STREAMS";
+export const CALL_SET_LOCAL_CAMERA_ENABLED = "CALL.SET_LOCAL_CAMERA_ENABLED";
+export const CALL_SET_LOCAL_MICROPHONE_ENABLED =
+  "CALL.SET_LOCAL_MICROPHONE_ENABLED";
 export const setCallState = (callState) => {
   return {
     type: CALL_SET_CALL_STATE,
@@ -35,6 +38,19 @@ export const setGroupCallIncomingStreams = (groupCallStreams) => {
   return {
     type: CALL_SET_GROUP_CALL_STREAMS,
     groupCallStreams,
+  };
+};
+
+export const setLocalCameraEnabled = (enabled) => {
+  return {
+    type: CALL_SET_LOCAL_CAMERA_ENABLED,
+    enabled,
+  };
+};
+export const setLocalMicrophoneEnabled = (enabled) => {
+  return {
+    type: CALL_SET_LOCAL_MICROPHONE_ENABLED,
+    enabled,
   };
 };
 export const clearGroupCallData = () => {

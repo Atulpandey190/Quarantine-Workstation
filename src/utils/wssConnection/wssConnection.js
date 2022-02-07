@@ -31,9 +31,12 @@ export const connectWithWebSocket = () => {
     console.log(data);
     webRTCGroupCallHandler.connectToNewUser(data);
   });
+  socket.on("new_member2", (data) => {
+    console.log("new member", data);
+  });
 };
 export const joinNewRoom = (data) => {
-  console.log({...data} );
+  console.log({ ...data });
   socket.emit("join_room", { ...data });
 };
 export const registerNewUser = (username) => {
@@ -46,12 +49,12 @@ export const userLeftGroupCall = (data) => {
   socket.emit("group-call-user-left", data);
 };
 export const sendMessage = (data) => {
-  console.log(data);
+  console.log("sendMessage", data);
   socket.emit("send_message", data);
 };
 export const receiveMessage = (message) => {
   socket.on("receive_message", (data) => {
-    console.log(message);
+    console.log("wss", message);
   });
 };
 

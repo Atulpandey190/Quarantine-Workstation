@@ -4,10 +4,9 @@ const styles = {
     width: "150px",
     height: "150px",
     borderRadius: "8px",
-    backgroundColor:"black",
     position: "absolute",
     top: "5%",
-    right: "23%",
+    right: "25%",
     zIndex : "100",
   },
   videoElement: {
@@ -32,7 +31,8 @@ const LocalVideoView = (props) => {
     }
   }, [localStream]);
   return (
-    <div style={styles.videoContainer} className="background_secondary_color">
+    <div style={styles.videoContainer}>
+      <p>{localStream.id}</p>
       <video style={styles.videoElement} ref={localVideoRef} autoPlay muted />
     </div>
   );

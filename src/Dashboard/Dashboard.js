@@ -17,7 +17,7 @@ const Dashboard = (props) => {
     webRTCGroupCallHandler.connectWithMyPeer();
     webRTCGroupCallHandler.getLocalStream();
   }, []);
-  
+
   return (
     <>
       <h1>{dashboardState.username}</h1>
@@ -28,7 +28,11 @@ const Dashboard = (props) => {
           curruser={dashboardState.username}
         />
 
-        <Controlarea className="control-area" socket={props.socket} />
+        <Controlarea
+          className="control-area"
+          socket={props.socket}
+          localStream={callState.localStream}
+        />
       </div>
       <div className="lower-container">
         {code ? (

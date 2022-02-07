@@ -1,8 +1,13 @@
 import React, { useEffect, useRef } from "react";
 const styles = {
   videoContainer: {
-    width: "100%",
-    height: "100%",
+    width: "150px",
+    height: "150px",
+    borderRadius: "8px",
+    backgroundColor: "black",
+    position: "absolute",
+    top: "5%",
+    right: "23%",
     zIndex: "100",
   },
   videoElement: {
