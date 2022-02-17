@@ -14,52 +14,43 @@ const Dashboard = (props) => {
   const callState = useSelector((state) => state.groupcallReducer);
   useEffect(() => {
     //Uncomment When Done!!!
-    //webRTCGroupCallHandler.connectWithMyPeer();
-    //webRTCGroupCallHandler.getLocalStream();
+    webRTCGroupCallHandler.connectWithMyPeer();
+    webRTCGroupCallHandler.getLocalStream();
   }, []);
 
   return (
     <>
-
       <div className="main-container">
-    
         <div className="upper-container">
-        <Chattingarea
+          <Chattingarea
             className="chatting-area"
             curruser={dashboardState.username}
-          />        
-
-        </div>
-        <div className="Video-Section">
-        <h1>Join A Chat for video!! </h1>
-        
-        <div className="controlarea-container">
-        
-        <Controlarea
-            className="control-area"
-            socket={props.socket}
-            localStream={callState.localStream}
           />
         </div>
-
-
+        <div className="Video-Section">
+          <div id="controlarea" className="controlarea-container">
+            <Controlarea
+              className="control-area"
+              socket={props.socket}
+              localStream={callState.localStream}
+            />
+          </div>
         </div>
-        
       </div>
-      {/*
-      <div className="lower-container">
-        {code ? (
-          <MusicArea className="music-area" code={code} />
-        ) : (
-          <Button
-            style={{ position: "absolute", top: "50%", marginLeft: "45%" }}
-            variant="warning"
-            href={AUTH_URL}
-          >
-            Login Spotify
-          </Button>
-        )}
-        </div>*/}
+      {/** 
+        <div className="lower-container">
+          {code ? (
+            <MusicArea className="music-area" code={code} />
+          ) : (
+            <Button
+              style={{ position: "absolute", top: "50%", marginLeft: "45%" }}
+              variant="warning"
+              href={AUTH_URL}
+            >
+              Login Spotify
+            </Button>
+          )}
+        </div>**/}
     </>
   );
 };

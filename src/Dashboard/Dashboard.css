@@ -27,10 +27,10 @@
   width: 20%;
   height: 100%;
 }
-.controlarea-container
-{
-  padding-top:60vh;
-  padding-left:35vw;
+.controlarea-container{
+  height: 80vh;
+  width: 100%;
+  
 }
 .chatting-area {
   background: red;
