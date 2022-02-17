@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import RoomCall from "./RoomCall/RoomCall";
 import "./RoomCall/RoomCall.css";
+import "./Room.css";
 import * as webRTCGroupCallHandler from "../../../utils/webRTC/webRTCGroupCallHandler";
 import RoomCallVideo from "./RoomCall/RoomCallVideo";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,15 +55,15 @@ const Room = (props) => {
 
       {!groupCallActive && (
         <div className="joinChatContainer">
-          <h3>Join a chat</h3>
+          <h3>Join Group</h3>
           <input
             type="text"
-            placeholder="Room Code...."
+            placeholder="Room Code"
             onChange={(event) => {
               setRoom(event.target.value);
             }}
           ></input>
-          <button onClick={createRoom}>Join A Room</button>
+          <button onClick={createRoom}>Join Group Call</button>
         </div>
       )}
     </>

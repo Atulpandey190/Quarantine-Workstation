@@ -37,20 +37,20 @@ const Dashboard = (props) => {
           </div>
         </div>
       </div>
-      {/** 
+      { 
         <div className="lower-container">
           {code ? (
             <MusicArea className="music-area" code={code} />
           ) : (
-            <Button
+            <button
               style={{ position: "absolute", top: "50%", marginLeft: "45%" }}
               variant="warning"
               href={AUTH_URL}
             >
               Login Spotify
-            </Button>
+            </button>
           )}
-        </div>**/}
+        </div>}
     </>
   );
 };

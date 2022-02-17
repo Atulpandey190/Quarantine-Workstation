@@ -19,11 +19,13 @@ export function Controlarea({ localStream }) {
         <Room />
       </div>
 
-      <div className="icons-area">
-        <MicButton localStream={localStream} />
-        {callState.groupCallActive && <LeaveButton />}
-        <CameraButton localStream={localStream} />
-      </div>
+      {callState.groupCallActive && (
+        <div className="icons-area">
+          <MicButton localStream={localStream} />
+          <LeaveButton />
+          <CameraButton localStream={localStream} />
+        </div>
+      )}
     </div>
   );
 }

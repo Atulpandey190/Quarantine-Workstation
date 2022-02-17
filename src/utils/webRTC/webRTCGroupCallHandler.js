@@ -45,8 +45,9 @@ export const connectWithMyPeer = () => {
   });
 };
 export const newGroupCallRoom = (data) => {
+  console.log(data);
   const localStream = store.getState().groupcallReducer.localStream;
-  groupCallRoomId = data.roomId;
+  groupCallRoomId = data.room;
 
   wss.joinNewRoom({
     ...data,
@@ -99,10 +100,26 @@ export const leaveGroupCall = () => {
   console.log("Leaving Group");
   wss.userLeftGroupCall({
     // roomId
+    streamId: store.getState().groupcallReducer.localStream.id,
+    roomId: groupCallRoomId,
   });
+  groupCallRoomId = null;
   clearGroupData();
+  console.log(myPeer);
+  myPeer.destroy();
+  connectWithMyPeer();
 };
 
+export const removeInactiveStream = (data) => {
+  console.log(data);
+  const groupCallStreams = store
+    .getState()
+    .groupcallReducer.groupCallStreams.filter(
+      (stream) => stream.id !== data.streamId
+    );
+
+  store.dispatch(setGroupCallIncomingStreams(groupCallStreams));
+};
 export const sendMessageThroughSocket = (messageData) => {
   wss.sendMessage(messageData);
 };
