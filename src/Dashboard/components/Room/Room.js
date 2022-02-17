@@ -23,6 +23,7 @@ const Room = (props) => {
       webRTCGroupCallHandler.newGroupCallRoom({
         username: dashboardState.username,
         room: room,
+        streamId: localStream.id,
       });
     }
   };

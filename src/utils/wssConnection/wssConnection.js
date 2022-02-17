@@ -10,6 +10,7 @@ const broadcastEventTypes = {
   ACTIVE_USERS: "ACTIVE_USERS",
   GROUP_CALL_ROOM: "GROUP_CALL_ROOM",
   ROOM_MEMBERS: "ROOM_MEMBERS",
+  USER_DISCONNECTED: "USER_DISCONNECTED",
 };
 
 export let socket = "";
@@ -70,6 +71,9 @@ const handleBroadcastEvents = (data) => {
         (activeUser) => activeUser.socketId !== socket.id
       );
       store.dispatch(dashboardActions.setActiveUsers(activeUsers));
+      break;
+    case broadcastEventTypes.USER_DISCONNECTED:
+      webRTCGroupCallHandler.removeInactiveStream(data);
       break;
     default:
       break;

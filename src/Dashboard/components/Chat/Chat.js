@@ -6,6 +6,7 @@ import { socket } from "../../../utils/wssConnection/wssConnection";
 function Chat({ username, room }) {
   console.log(username, room);
   const dashboardState = useSelector((state) => state.dashboardReducer);
+  const callState = useSelector((state) => state.groupCallReducer);
   const [currentMessage, setcurrentMessage] = useState("");
   const [messageList, setmessageList] = useState([]);
 
@@ -27,12 +28,14 @@ function Chat({ username, room }) {
 
   useEffect(() => {
     console.log(socket);
-    socket.on("receive_message", (data) => {
-      console.log("Recieved");
-      if (dashboardState.username != data.author)
-        setmessageList((list) => [...list, data]);
-    });
-  }, [dashboardState.username, socket]);
+    if (dashboardState.groupCallRoom) {
+      socket.on("receive_message", (data) => {
+        console.log("Recieved");
+        if (dashboardState.username != data.author)
+          setmessageList((list) => [...list, data]);
+      });
+    }
+  }, [dashboardState.groupCallRoom, dashboardState.username, socket]);
 
   return (
     <div className="chat-window">
