@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./MusicArea.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import MusicPlayer from "./MusicPlayer";
 import useAuth from "../../../hooks/useAuth";
 
@@ -17,10 +19,10 @@ export default function MusicArea({ code }) {
   return (
     <>
       <div className="music-area">
-        <Button variant="outline-dark" onClick={searchButtonClickHandler}>
+        {/* {<Button variant="outline-dark" onClick={searchButtonClickHandler}>
           {" "}
           Search for a Song / Artist{" "}
-        </Button>
+        </Button>} */}
 
         <ModalSearch
           accessToken={accessToken}
@@ -37,6 +39,10 @@ export default function MusicArea({ code }) {
           playingTrack={playingTrack}
           setPlayingTrack={setPlayingTrack}
         ></MusicPlayer>
+
+        <div className="music-search-button" onClick={searchButtonClickHandler}>
+          <i className="fas fa-search"></i>
+        </div>
       </div>
     </>
   );

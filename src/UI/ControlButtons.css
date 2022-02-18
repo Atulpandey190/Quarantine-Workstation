@@ -12,7 +12,8 @@
   font-size: 30px;
   align-items: center;
 }
-.leave-btn {
+.leave-btn,
+.spotify-btn {
   height: 40px;
   font-size: 20px;
   padding: 0px 20px;
@@ -25,4 +26,10 @@
   background-color: rgb(69, 179, 224);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   color: white;
+}
+.spotify-btn{
+  text-decoration:none;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  text-align: center;
 }
