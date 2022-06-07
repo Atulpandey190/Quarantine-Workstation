@@ -1,0 +1,35 @@
+.chat-footer {
+  height: 7vh;
+  border: none;
+  border-top: none;
+  display: flex;
+}
+
+.chat-footer input {
+  height: 100%;
+  flex: 85%;
+  border: 0;
+  padding: 0 0.7em;
+  font-size: 1em;
+  border: none;
+  outline: none;
+  font-family: "Open Sans", sans-serif;
+}
+
+.chat-footer button {
+  border: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex: 15%;
+  height: 100%;
+  background: transparent;
+  border-radius: 50%;
+  outline: none;
+  font-size: 25px;
+  color: green;
+}
+
+.chat-footer button:hover {
+  color: rgb(69, 179, 224);
+}

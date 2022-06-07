@@ -4,6 +4,9 @@ import { useSelector } from "react-redux";
 import "../Chat/Chat.css";
 import * as webRTCGroupCallHandler from "../../../utils/webRTC/webRTCGroupCallHandler";
 import { socket } from "../../../utils/wssConnection/wssConnection";
+import ChatBody from "./ChatBody";
+import ChatInput from "./ChatInput";
+import ChatHeader from "./ChatHeader";
 function Chat({ username, room }) {
   console.log(username, room);
   const dashboardState = useSelector((state) => state.dashboardReducer);
@@ -24,6 +27,7 @@ function Chat({ username, room }) {
       };
       webRTCGroupCallHandler.sendMessageThroughSocket(messageData);
       setmessageList((list) => [...list, messageData]);
+      setcurrentMessage("");
     }
   };
 
@@ -40,43 +44,13 @@ function Chat({ username, room }) {
 
   return (
     <div className="chat-window">
-      <div className="chat-header">
-        <h4>Room  <span>{dashboardState.groupCallRoom}</span></h4>
-      </div>
-      <div className="chat-body">
-        {messageList.map((messageContent) => {
-          return (
-            <div
-              className="message"
-              id={
-                dashboardState.username != messageContent.author
-                  ? "you"
-                  : "other"
-              }
-            >
-              <div>
-                <div className="message-content">
-                  <p>{messageContent.message}</p>
-                </div>
-                <div className="message-meta">
-                  <p>{messageContent.time}</p>
-                  <p>{messageContent.author}</p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <div className="chat-footer">
-        <input
-          type="text"
-          placeholder="Write your message here"
-          onChange={(event) => {
-            setcurrentMessage(event.target.value);
-          }}
-        ></input>
-        <button onClick={sendMessage}>&#9658;</button>
-      </div>
+      <ChatHeader dashboardState={dashboardState} />
+      <ChatBody dashboardState={dashboardState} messageList={messageList} />
+      <ChatInput
+        currentMessage={currentMessage}
+        setcurrentMessage={setcurrentMessage}
+        sendMessage={sendMessage}
+      />
     </div>
   );
 }
