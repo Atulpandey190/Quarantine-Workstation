@@ -2,6 +2,7 @@ import * as webRTCGroupCallHandler from "../utils/webRTC/webRTCGroupCallHandler"
 import MusicArea from "./components/MusicArea/MusicArea";
 import Chattingarea from "./components/ChattingArea/Chattingarea";
 import { Controlarea } from "./components/ControlArea/Controlarea";
+import { SpotifyLoginButton } from "../UI/ControlButtons";
 import "./Dashboard.css";
 import { useSelector } from "react-redux";
 import Room from "./components/Room/Room";
@@ -22,10 +23,7 @@ const Dashboard = (props) => {
     <>
       <div className="main-container">
         <div className="upper-container">
-          <Chattingarea
-            className="chatting-area"
-            curruser={dashboardState.username}
-          />
+          <Chattingarea curruser={dashboardState.username} />
         </div>
         <div className="Video-Section">
           <div id="controlarea" className="controlarea-container">
@@ -42,7 +40,9 @@ const Dashboard = (props) => {
           {code ? (
             <MusicArea className="music-area" code={code} />
           ) : (
-            <a href={AUTH_URL}>Login</a>
+            <div className="spotify-button-container">
+              <SpotifyLoginButton AUTH_URL={AUTH_URL} />
+            </div>
           )}
         </div>
       }

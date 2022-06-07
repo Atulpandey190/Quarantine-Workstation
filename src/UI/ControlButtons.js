@@ -53,7 +53,16 @@ export const MicButton = ({ localStream }) => {
     </div>
   );
 };
-
+export const SpotifyLoginButton = ({ AUTH_URL }) => {
+  const loginButtonHandler = (e) => {
+    // e.preventDefault();
+  };
+  return (
+    <>
+      <a className="spotify-btn" onClick={loginButtonHandler} href={AUTH_URL}>Login Spotify</a>
+    </>
+  );
+};
 export const LeaveButton = () => {
   const dispatch = useDispatch();
   const leaveRoom = (e) => {

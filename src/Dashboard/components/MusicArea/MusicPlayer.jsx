@@ -10,8 +10,8 @@ function MusicPlayer({ accessToken, playingTrack, setPlayingTrack }) {
   };
 
   return (
-    <div>
-      <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+    <div className="player">
+     { <Player accessToken={accessToken} trackUri={playingTrack?.uri} />}
     </div>
   );
 }
