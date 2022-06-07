@@ -1,0 +1,5 @@
+.videoElement {
+  display: flex;
+  flex-shrink: 2;
+  max-height: 245px;
+}

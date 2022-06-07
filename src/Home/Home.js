@@ -18,16 +18,15 @@ export default function Home() {
     navigate("/dashboard");
   };
   return (
-    <>
-      <h1>{dashboardState.username}</h1>
+
       <div className="home">
         {
           <div className="login">
-            <h1>User Login</h1>
             <div className="login-area">
+            <h1 className="heading">User Login</h1>
               <input
                 type="text"
-                placeholder="Enter Username Here...."
+                placeholder="Enter Username"
                 className="user-input"
                 value={dashboardState.username}
                 onChange={(e) => {
@@ -41,6 +40,6 @@ export default function Home() {
           </div>
         }
       </div>
-    </>
+
   );
 }

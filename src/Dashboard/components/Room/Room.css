@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+.joinChatContainer {
+  display: flex;
+  font-family: "Work Sans", sans-serif;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15vh;
+  
+}
+
+.joinChatContainer h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: bolder;
+}
+.joinChatContainer input {
+  width: 210px;
+  height: 50px;
+  margin: 7px;
+  border: 2px solid #43a047;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.joinChatContainer button {
+  width: 210px;
+  height: 50px;
+  margin: 7px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  background: rgb(69,179,224);
+  font-weight: bolder;
+  color: #fff;
+  cursor: pointer;
+}
+
+.joinChatContainer button:hover {
+  background: #2e7d32;
+  
+}

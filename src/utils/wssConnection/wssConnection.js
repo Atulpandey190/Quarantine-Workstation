@@ -10,6 +10,7 @@ const broadcastEventTypes = {
   ACTIVE_USERS: "ACTIVE_USERS",
   GROUP_CALL_ROOM: "GROUP_CALL_ROOM",
   ROOM_MEMBERS: "ROOM_MEMBERS",
+  USER_DISCONNECTED: "USER_DISCONNECTED",
 };
 
 export let socket = "";
@@ -25,14 +26,15 @@ export const connectWithWebSocket = () => {
   socket.on("broadcast", (data) => {
     handleBroadcastEvents(data);
   });
-  
+
   socket.on("new_member", (data) => {
     console.log("Group Call Request");
     console.log(data);
     webRTCGroupCallHandler.connectToNewUser(data);
   });
-  socket.on("new_member2", (data) => {
-    console.log("new member", data);
+  socket.on("group-call-user-left", (data) => {
+    console.log(data);
+    webRTCGroupCallHandler.removeInactiveStream(data);
   });
 };
 export const joinNewRoom = (data) => {
@@ -46,6 +48,7 @@ export const registerNewUser = (username) => {
   });
 };
 export const userLeftGroupCall = (data) => {
+  console.log(data);
   socket.emit("group-call-user-left", data);
 };
 export const sendMessage = (data) => {
@@ -68,6 +71,9 @@ const handleBroadcastEvents = (data) => {
         (activeUser) => activeUser.socketId !== socket.id
       );
       store.dispatch(dashboardActions.setActiveUsers(activeUsers));
+      break;
+    case broadcastEventTypes.USER_DISCONNECTED:
+      webRTCGroupCallHandler.removeInactiveStream(data);
       break;
     default:
       break;

@@ -1,13 +1,17 @@
 import React from "react";
-import RoomCallVideo from "./RoomCallVideo";
 import LocalVideoView from "../../LocalVideoView/LocalVideoView";
+import Card from "../../../../UI/Card";
+const backgroundColor = true;
 const RoomCall = (props) => {
-  const {localStream, groupCallActive } = props;
+  const { localStream, groupCallActive } = props;
 
   return (
     <>
       {groupCallActive && localStream && (
-        <LocalVideoView localStream={localStream} />
+        <Card
+          backgroundColor={backgroundColor}
+          RoomCallVideo={<LocalVideoView localStream={localStream} />}
+        />
       )}
     </>
   );

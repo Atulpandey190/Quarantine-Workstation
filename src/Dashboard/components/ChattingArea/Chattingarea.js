@@ -5,7 +5,7 @@ import Chat from "../Chat/Chat";
 import * as webRTCGroupCallHandler from "../../../utils/webRTC/webRTCGroupCallHandler";
 import { useEffect } from "react";
 function Chattingarea() {
-  const [showChat, setshowChat] = useState(false);
+  const [showChat, setshowChat] = useState(true);
 
   const dashboardState = useSelector((state) => state.dashboardReducer);
   useEffect(() => {

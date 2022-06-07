@@ -1,0 +1,28 @@
+.control-btn {
+  height: 40px;
+  width: 70px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 30px;
+  align-items: center;
+}
+.leave-btn {
+  height: 40px;
+  font-size: 20px;
+  padding: 0px 20px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgb(69, 179, 224);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: white;
+}
