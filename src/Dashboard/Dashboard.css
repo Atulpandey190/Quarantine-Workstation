@@ -3,9 +3,9 @@
   height: 90vh;
 }
 .upper-container {
-  background-color: violet;
   display: flex;
-  flex: 1;
+  height:100%;
+  width: 20vw;
   background-color: aqua;
 }
 .Video-Section {

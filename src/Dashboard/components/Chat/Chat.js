@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import "../Chat/Chat.css";
 import * as webRTCGroupCallHandler from "../../../utils/webRTC/webRTCGroupCallHandler";
 import { socket } from "../../../utils/wssConnection/wssConnection";
 function Chat({ username, room }) {
@@ -30,7 +31,7 @@ function Chat({ username, room }) {
     console.log(socket);
     if (dashboardState.groupCallRoom) {
       socket.on("receive_message", (data) => {
-        console.log("Recieved");
+        console.log("Received");
         if (dashboardState.username != data.author)
           setmessageList((list) => [...list, data]);
       });
@@ -40,7 +41,7 @@ function Chat({ username, room }) {
   return (
     <div className="chat-window">
       <div className="chat-header">
-        <p>Group Room : {dashboardState.groupCallRoom}</p>
+        <h4>Room  <span>{dashboardState.groupCallRoom}</span></h4>
       </div>
       <div className="chat-body">
         {messageList.map((messageContent) => {
