@@ -1,10 +1,11 @@
 import React from "react";
 import "./ChatBody.css";
 import MessageContent from "./MessageContent";
-
+import ScrollToBottom from 'react-scroll-to-bottom';
 const ChatBody = ({ messageList, dashboardState }) => {
   return (
     <div className="chat-body">
+      <ScrollToBottom className="message-container">
       {messageList.map((messageContent) => {
         return (
           <div
@@ -17,6 +18,7 @@ const ChatBody = ({ messageList, dashboardState }) => {
           </div>
         );
       })}
+      </ScrollToBottom>
     </div>
   );
 };

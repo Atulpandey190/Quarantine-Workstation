@@ -10,6 +10,9 @@ const ChatInput = ({ currentMessage, setcurrentMessage, sendMessage }) => {
         onChange={(event) => {
           setcurrentMessage(event.target.value);
         }}
+        onKeyPress={(event) => {
+          event.key === "Enter" && sendMessage();
+        }}
       ></input>
       <button onClick={sendMessage}>&#9658;</button>
     </div>

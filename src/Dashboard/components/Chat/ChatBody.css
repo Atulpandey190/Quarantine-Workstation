@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow-y: scroll;
   overflow-x: hidden;
 
   border: none;
@@ -42,6 +41,11 @@
   word-break: break-word;
 }
 
+.message-meta p{
+  text-transform: capitalize;
+  margin: 5px;
+}
+
 #you {
   justify-content: flex-start;
 }
@@ -51,6 +55,7 @@
 #you .message-content {
   justify-content: flex-start;
 }
+
 
 #you .message-meta {
   justify-content: flex-start;

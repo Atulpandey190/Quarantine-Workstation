@@ -34,7 +34,7 @@ function Chat({ username, room }) {
   useEffect(() => {
     console.log(socket);
     if (dashboardState.groupCallRoom) {
-      socket.on("receive_message", (data) => {
+      socket.off('receive_message').on("receive_message", (data) => {
         console.log("Received");
         if (dashboardState.username != data.author)
           setmessageList((list) => [...list, data]);
