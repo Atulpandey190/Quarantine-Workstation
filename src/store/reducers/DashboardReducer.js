@@ -5,6 +5,8 @@ const initState = {
   activeUsers: [],
   groupCallRoom: null,
   messageList: [],
+  showChat: true,
+  showMusicPlayer: true,
 };
 //Creating intial State for a Client User
 
@@ -29,6 +31,16 @@ const reducer = (state = initState, action) => {
       return {
         ...state,
         messageList: state.messageList.concat(action.messageData),
+      };
+    case dashboardActions.DASHBOARD_SET_SHOW_CHAT:
+      return {
+        ...state,
+        showChat: action.showChat,
+      };
+    case dashboardActions.DASHBOARD_SET_SHOW_MUSIC_PLAYER:
+      return {
+        ...state,
+        showMusicPlayer: action.showMusicPlayer,
       };
     default:
       return state;

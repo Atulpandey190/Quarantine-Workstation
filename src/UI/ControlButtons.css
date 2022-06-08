@@ -27,8 +27,12 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   color: white;
 }
-.spotify-btn{
-  text-decoration:none;
+.leave-btn:hover {
+  transition: all 0.3s;
+  background-color: green;
+}
+.spotify-btn {
+  text-decoration: none;
   padding-top: 5px;
   padding-bottom: 10px;
   text-align: center;

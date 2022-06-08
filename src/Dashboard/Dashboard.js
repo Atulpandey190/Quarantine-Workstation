@@ -15,6 +15,9 @@ const Dashboard = (props) => {
   const { AUTH_URL } = props;
   const dashboardState = useSelector((state) => state.dashboardReducer);
   const callState = useSelector((state) => state.groupcallReducer);
+  let customStyle = {
+    height: dashboardState.showMusicPlayer ? "90vh" : "100vh",
+  };
   useEffect(() => {
     //Uncomment When Done!!!
     webRTCGroupCallHandler.connectWithMyPeer();
@@ -29,24 +32,27 @@ const Dashboard = (props) => {
 
   return (
     <>
-      <div className="main-container">
-        <div className="upper-container">
-          <Chattingarea
-            curruser={dashboardState.username}
-            socket={props.socket}
-          />
-        </div>
+      <div className="main-container" style={customStyle}>
+        {dashboardState.showChat && (
+          <div className="upper-container">
+            <Chattingarea
+              curruser={dashboardState.username}
+              socket={props.socket}
+            />
+          </div>
+        )}
         <div className="Video-Section">
           <div id="controlarea" className="controlarea-container">
             <Controlarea
               className="control-area"
+              style={customStyle}
               socket={props.socket}
               localStream={callState.localStream}
             />
           </div>
         </div>
       </div>
-      {
+      {dashboardState.showMusicPlayer && (
         <div className="lower-container">
           {code ? (
             <MusicArea className="music-area" code={code} />
@@ -56,7 +62,7 @@ const Dashboard = (props) => {
             </div>
           )}
         </div>
-      }
+      )}
     </>
   );
 };
