@@ -55,9 +55,11 @@ export const sendMessage = (data) => {
   console.log("sendMessage", data);
   socket.emit("send_message", data);
 };
-export const receiveMessage = (message) => {
+export const receiveMessage = () => {
   socket.on("receive_message", (data) => {
-    console.log("wss", message);
+    console.log(data);
+
+    store.dispatch(dashboardActions.setUserMessageList(data));
   });
 };
 

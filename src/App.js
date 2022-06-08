@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { connectWithWebSocket } from "./utils/wssConnection/wssConnection";
 import { socket } from "./utils/wssConnection/wssConnection";
+
 import "./App.css";
 
 import Dashboard from "./Dashboard/Dashboard";
@@ -14,6 +15,7 @@ function App() {
   useEffect(() => {
     connectWithWebSocket();
   }, []);
+
   return (
     <div className="App">
       <Router>

@@ -123,7 +123,9 @@ export const removeInactiveStream = (data) => {
 export const sendMessageThroughSocket = (messageData) => {
   wss.sendMessage(messageData);
 };
-
+export const receiveMessageThroughSocket = () => {
+  wss.receiveMessage();
+};
 export const getLocalStream = () => {
   navigator.mediaDevices
     .getUserMedia(defaultConstraints)

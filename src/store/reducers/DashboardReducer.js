@@ -4,7 +4,7 @@ const initState = {
   username: "",
   activeUsers: [],
   groupCallRoom: null,
-  messageList:[],
+  messageList: [],
 };
 //Creating intial State for a Client User
 
@@ -24,6 +24,11 @@ const reducer = (state = initState, action) => {
       return {
         ...state,
         groupCallRoom: action.groupCallRoom,
+      };
+    case dashboardActions.DASHBOARD_SET_USER_MESSAGE_LIST:
+      return {
+        ...state,
+        messageList: state.messageList.concat(action.messageData),
       };
     default:
       return state;
