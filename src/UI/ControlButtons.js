@@ -4,7 +4,11 @@ import {
   setLocalCameraEnabled,
   setLocalMicrophoneEnabled,
 } from "../store/actions/groupCallActions";
-import { setGroupCallRoom } from "../store/actions/dashboardActions";
+import {
+  setGroupCallRoom,
+  setShowChat,
+  setShowMusicPlayer,
+} from "../store/actions/dashboardActions";
 import * as webRTCGroupCallHandler from "../utils/webRTC/webRTCGroupCallHandler";
 import "./ControlButtons.css";
 const style = {};
@@ -53,13 +57,44 @@ export const MicButton = ({ localStream }) => {
     </div>
   );
 };
+export const ShowChatButton = ({ showChat }) => {
+  const dispatch = useDispatch();
+  const showChatHandler = (e) => {
+    e.preventDefault();
+    dispatch(setShowChat(!showChat));
+  };
+  return (
+    <>
+      <button className="leave-btn" onClick={(e) => showChatHandler(e)}>
+        Chat
+      </button>
+    </>
+  );
+};
+export const ShowMusicPlayerButton = ({ showMusicPlayer }) => {
+  const dispatch = useDispatch();
+  const showMusicPlayerHandler = (e) => {
+    e.preventDefault();
+    dispatch(setShowMusicPlayer(!showMusicPlayer));
+  };
+  return (
+    <>
+      <button className="leave-btn" onClick={(e) => showMusicPlayerHandler(e)}>
+        Music Player
+      </button>
+    </>
+  );
+};
+
 export const SpotifyLoginButton = ({ AUTH_URL }) => {
   const loginButtonHandler = (e) => {
     // e.preventDefault();
   };
   return (
     <>
-      <a className="spotify-btn" onClick={loginButtonHandler} href={AUTH_URL}>Login Spotify</a>
+      <a className="spotify-btn" onClick={loginButtonHandler} href={AUTH_URL}>
+        Login Spotify
+      </a>
     </>
   );
 };

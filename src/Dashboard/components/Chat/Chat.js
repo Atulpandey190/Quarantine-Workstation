@@ -7,12 +7,9 @@ import { socket } from "../../../utils/wssConnection/wssConnection";
 import ChatBody from "./ChatBody";
 import ChatInput from "./ChatInput";
 import ChatHeader from "./ChatHeader";
-function Chat({ username, room }) {
-  console.log(username, room);
+function Chat({ username, room, newSocket }) {
   const dashboardState = useSelector((state) => state.dashboardReducer);
-  const callState = useSelector((state) => state.groupCallReducer);
   const [currentMessage, setcurrentMessage] = useState("");
-  const [messageList, setmessageList] = useState([]);
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
@@ -26,26 +23,19 @@ function Chat({ username, room }) {
           new Date(Date.now()).getMinutes(),
       };
       webRTCGroupCallHandler.sendMessageThroughSocket(messageData);
-      setmessageList((list) => [...list, messageData]);
       setcurrentMessage("");
     }
   };
 
-  useEffect(() => {
-    console.log(socket);
-    if (dashboardState.groupCallRoom) {
-      socket.off('receive_message').on("receive_message", (data) => {
-        console.log("Received");
-        if (dashboardState.username != data.author)
-          setmessageList((list) => [...list, data]);
-      });
-    }
-  }, [dashboardState.groupCallRoom, dashboardState.username, socket]);
+  
 
   return (
     <div className="chat-window">
       <ChatHeader dashboardState={dashboardState} />
-      <ChatBody dashboardState={dashboardState} messageList={messageList} />
+      <ChatBody
+        dashboardState={dashboardState}
+        messageList={dashboardState.messageList}
+      />
       <ChatInput
         currentMessage={currentMessage}
         setcurrentMessage={setcurrentMessage}

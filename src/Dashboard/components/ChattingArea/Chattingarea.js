@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Chat from "../Chat/Chat";
 import * as webRTCGroupCallHandler from "../../../utils/webRTC/webRTCGroupCallHandler";
 import { useEffect } from "react";
-function Chattingarea() {
+function Chattingarea({ socket }) {
   const [showChat, setshowChat] = useState(true);
 
   const dashboardState = useSelector((state) => state.dashboardReducer);
@@ -15,7 +15,6 @@ function Chattingarea() {
     ) {
       setshowChat(true);
       console.log(dashboardState.groupCallRoom);
-      
     }
   }, [dashboardState.username, dashboardState.groupCallRoom]);
   return (
@@ -26,6 +25,7 @@ function Chattingarea() {
         <Chat
           username={dashboardState.username}
           room={dashboardState.groupCallRoom}
+          socketNew={socket}
         />
       )}
     </div>

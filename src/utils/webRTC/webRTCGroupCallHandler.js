@@ -121,6 +121,7 @@ export const removeInactiveStream = (data) => {
   store.dispatch(setGroupCallIncomingStreams(groupCallStreams));
 };
 export const sendMessageThroughSocket = (messageData) => {
+  console.log("Sending Message");
   wss.sendMessage(messageData);
 };
 

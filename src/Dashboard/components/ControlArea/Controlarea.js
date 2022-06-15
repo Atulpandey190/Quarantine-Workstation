@@ -5,11 +5,14 @@ import {
   CameraButton,
   LeaveButton,
   MicButton,
+  ShowChatButton,
+  ShowMusicPlayerButton,
 } from "../../../UI/ControlButtons";
 import ActiveUsersList from "../ActiveUsers/ActiveUsersList";
 import Room from "../Room/Room";
 export function Controlarea({ localStream }) {
   const callState = useSelector((state) => state.groupcallReducer);
+  const dashboardState = useSelector((state) => state.dashboardReducer);
   return (
     <div className="control-area">
       <div className="control-area-heading">
@@ -22,7 +25,11 @@ export function Controlarea({ localStream }) {
       {callState.groupCallActive && (
         <div className="icons-area">
           <MicButton localStream={localStream} />
+          <ShowChatButton showChat={dashboardState.showChat} />
           <LeaveButton />
+          <ShowMusicPlayerButton
+            showMusicPlayer={dashboardState.showMusicPlayer}
+          />
           <CameraButton localStream={localStream} />
         </div>
       )}

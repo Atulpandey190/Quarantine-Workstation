@@ -1,0 +1,77 @@
+.home-spotify {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background: #1f1a36;
+}
+
+.login-area-spotify {
+  height: 200px;
+  width: 400px;
+  display: flex;
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top: 75px;
+  flex-direction: column;
+}
+
+.login-spotify {
+  font-family: "Work Sans", sans-serif;
+  background-color: #231e39;
+  place-items: center;
+  height: 250px;
+  width: 450px;
+  
+  margin-left: 40%;
+  margin-right: 40%;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.login-btn-spotify {
+  margin-top: 20px;
+  height: 60px;
+  font-size: 20px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: bold;
+  width: 300px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(69, 179, 224);
+  justify-content: center;
+  text-align: center;
+  padding-top: 15px;
+  text-decoration: none;
+  color: white;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+
+.spotify-btn {
+  height: 40px;
+  width: 300px;
+  font-size: 20px;
+  margin-top: 10px;
+  padding: 0px 20px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: auto;
+  background-color: rgb(224, 69, 69);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: white;
+  
+}
+
+.spotify-btn {
+  text-decoration: none;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  text-align: center;
+}

@@ -4,7 +4,10 @@ const initState = {
   username: "",
   activeUsers: [],
   groupCallRoom: null,
-  messageList:[],
+  messageList: [],
+  showChat: true,
+  showMusicPlayer: true,
+  code: "",
 };
 //Creating intial State for a Client User
 
@@ -24,6 +27,26 @@ const reducer = (state = initState, action) => {
       return {
         ...state,
         groupCallRoom: action.groupCallRoom,
+      };
+    case dashboardActions.DASHBOARD_SET_USER_MESSAGE_LIST:
+      return {
+        ...state,
+        messageList: state.messageList.concat(action.messageData),
+      };
+    case dashboardActions.DASHBOARD_SET_SHOW_CHAT:
+      return {
+        ...state,
+        showChat: action.showChat,
+      };
+    case dashboardActions.DASHBOARD_SET_SHOW_MUSIC_PLAYER:
+      return {
+        ...state,
+        showMusicPlayer: action.showMusicPlayer,
+      };
+    case dashboardActions.DASHBOARD_SET_SPOTIFY_APP:
+      return {
+        ...state,
+        code: action.code,
       };
     default:
       return state;

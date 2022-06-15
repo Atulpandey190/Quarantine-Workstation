@@ -7,7 +7,7 @@ const useAuth = (code) => {
   const [expiresIn, setExpiresIn] = useState();
 
   useEffect(() => {
-    console.log("authenticating user");
+    console.log("authenticating user",code);
     axios
       .post("http://localhost:3001/login", {
         code,
@@ -17,11 +17,11 @@ const useAuth = (code) => {
         setAccessToken(res.data.accessToken);
         setRefreshToken(res.data.refreshToken);
         setExpiresIn(res.data.expiresIn);
-        window.history.pushState({}, null, "/dashboard");
+        //window.history.pushState({}, null, "/dashboard");
       })
       .catch((err) => {
         console.log(err);
-        window.location = "/dashboard";
+        //window.location = "/dashboard";
       });
   }, [code]);
 
@@ -40,7 +40,7 @@ const useAuth = (code) => {
 
         .catch((err) => {
           console.log(err);
-          window.location = "/dashboard";
+          //window.location = "/dashboard";
         });
     }, (expiresIn - 60) * 1000);
 

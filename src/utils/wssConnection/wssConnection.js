@@ -36,6 +36,13 @@ export const connectWithWebSocket = () => {
     console.log(data);
     webRTCGroupCallHandler.removeInactiveStream(data);
   });
+  socket.on("receive_message", (data) => {
+    console.log("Received Message", data);
+    store.dispatch(dashboardActions.setUserMessageList(data));
+  });
+  socket.on("work", (data) => {
+    console.log(data);
+  });
 };
 export const joinNewRoom = (data) => {
   console.log({ ...data });
@@ -54,11 +61,6 @@ export const userLeftGroupCall = (data) => {
 export const sendMessage = (data) => {
   console.log("sendMessage", data);
   socket.emit("send_message", data);
-};
-export const receiveMessage = (message) => {
-  socket.on("receive_message", (data) => {
-    console.log("wss", message);
-  });
 };
 
 export const registerGroupCall = (data) => {
