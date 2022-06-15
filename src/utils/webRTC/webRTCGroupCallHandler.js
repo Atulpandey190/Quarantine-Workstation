@@ -8,9 +8,13 @@ import {
   setLocalStream,
   setGroupCallIncomingStreams,
 } from "../../store/actions/groupCallActions";
+import { getTurnServers } from "./TURN";
 
 const defaultConstraints = {
-  video: true,
+  video: {
+    width: 480,
+    height: 360,
+  },
   audio: true,
 };
 let myPeer;
@@ -22,6 +26,10 @@ export const connectWithMyPeer = () => {
     path: "/peerjs",
     host: "/",
     port: "3001",
+    config: {
+      iceServers: [...getTurnServers(), { url: "stun:stun.1und1.de:3478" }],
+      //iceTransportPolicy: "relay",
+    },
   });
 
   myPeer.on("open", (id) => {
