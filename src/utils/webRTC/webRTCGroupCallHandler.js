@@ -121,11 +121,10 @@ export const removeInactiveStream = (data) => {
   store.dispatch(setGroupCallIncomingStreams(groupCallStreams));
 };
 export const sendMessageThroughSocket = (messageData) => {
+  console.log("Sending Message");
   wss.sendMessage(messageData);
 };
-export const receiveMessageThroughSocket = () => {
-  wss.receiveMessage();
-};
+
 export const getLocalStream = () => {
   navigator.mediaDevices
     .getUserMedia(defaultConstraints)

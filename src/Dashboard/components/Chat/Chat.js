@@ -7,7 +7,7 @@ import { socket } from "../../../utils/wssConnection/wssConnection";
 import ChatBody from "./ChatBody";
 import ChatInput from "./ChatInput";
 import ChatHeader from "./ChatHeader";
-function Chat({ username, room }) {
+function Chat({ username, room, newSocket }) {
   const dashboardState = useSelector((state) => state.dashboardReducer);
   const [currentMessage, setcurrentMessage] = useState("");
 
@@ -27,12 +27,7 @@ function Chat({ username, room }) {
     }
   };
 
-  useEffect(() => {
-    if (dashboardState.groupCallRoom) {
-      console.log("ReceivedMessage");
-      webRTCGroupCallHandler.receiveMessageThroughSocket();
-    }
-  }, [dashboardState.groupCallRoom, dashboardState.username, socket]);
+  
 
   return (
     <div className="chat-window">

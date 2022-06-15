@@ -4,15 +4,16 @@ import Chattingarea from "./components/ChattingArea/Chattingarea";
 import { Controlarea } from "./components/ControlArea/Controlarea";
 import { SpotifyLoginButton } from "../UI/ControlButtons";
 import "./Dashboard.css";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
 import Room from "./components/Room/Room";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { setSpotifyApp } from "../store/actions/dashboardActions";
 
-const code = new URLSearchParams(window.location.search).get("code");
 const Dashboard = (props) => {
-  let navigate = useNavigate();
-  const { AUTH_URL } = props;
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const dashboardState = useSelector((state) => state.dashboardReducer);
   const callState = useSelector((state) => state.groupcallReducer);
   let customStyle = {
@@ -23,13 +24,6 @@ const Dashboard = (props) => {
     webRTCGroupCallHandler.connectWithMyPeer();
     webRTCGroupCallHandler.getLocalStream();
   }, []);
-
-  useEffect(() => {
-    if (dashboardState.username == "" || dashboardState.username == null) {
-      navigate("/", { replace: true });
-    }
-  }, [dashboardState.username]);
-
   return (
     <>
       <div className="main-container" style={customStyle}>
@@ -52,17 +46,11 @@ const Dashboard = (props) => {
           </div>
         </div>
       </div>
-      {dashboardState.showMusicPlayer && (
+      {
         <div className="lower-container">
-          {code ? (
-            <MusicArea className="music-area" code={code} />
-          ) : (
-            <div className="spotify-button-container">
-              <SpotifyLoginButton AUTH_URL={AUTH_URL} />
-            </div>
-          )}
+          {<MusicArea className="music-area" code={location.state.code} />}
         </div>
-      )}
+      }
     </>
   );
 };

@@ -6,6 +6,7 @@ export const DASHBOARD_SET_USER_MESSAGE_LIST =
 export const DASHBOARD_SET_SHOW_CHAT = "DASHBOARD_SET_SHOW_CHAT";
 export const DASHBOARD_SET_SHOW_MUSIC_PLAYER =
   "DASHBOARD_SET_SHOW_MUSIC_PLAYER";
+export const DASHBOARD_SET_SPOTIFY_APP = "DASHBOARD_SET_SPOTIFY_APP";
 export const setUsername = (username) => {
   return {
     type: DASHBOARD_SET_USERNAME,
@@ -44,5 +45,12 @@ export const setShowMusicPlayer = (showMusicPlayer) => {
   return {
     type: DASHBOARD_SET_SHOW_MUSIC_PLAYER,
     showMusicPlayer,
+  };
+};
+
+export const setSpotifyApp = (code) => {
+  return {
+    type: DASHBOARD_SET_SPOTIFY_APP,
+    code,
   };
 };
