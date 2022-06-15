@@ -9,7 +9,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Room from "./components/Room/Room";
 import { useEffect, useState } from "react";
 import { setSpotifyApp } from "../store/actions/dashboardActions";
-
+import axios from "axios";
+import { setTurnServers } from "../utils/webRTC/TURN";
 const Dashboard = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,8 +22,17 @@ const Dashboard = (props) => {
   };
   useEffect(() => {
     //Uncomment When Done!!!
-    webRTCGroupCallHandler.connectWithMyPeer();
-    webRTCGroupCallHandler.getLocalStream();
+    axios
+      .get("http://localhost:3001/api/get-turn-credentials")
+      .then((responseData) => {
+        console.log(responseData);
+        setTurnServers(responseData.data.token.iceServers);
+        webRTCGroupCallHandler.getLocalStream();
+        webRTCGroupCallHandler.connectWithMyPeer();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   return (
     <>
