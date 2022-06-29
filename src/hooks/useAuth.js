@@ -5,11 +5,11 @@ const useAuth = (code) => {
   const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
-
+  const SERVER = "https://quarantine-workstation-server.herokuapp.com/";
   useEffect(() => {
-    console.log("authenticating user",code);
+    console.log("authenticating user", code);
     axios
-      .post("http://localhost:3001/login", {
+      .post(`${SERVER}/login`, {
         code,
       })
       .then((res) => {
@@ -29,7 +29,7 @@ const useAuth = (code) => {
     if (!refreshToken || !expiresIn) return;
     const interval = setInterval(() => {
       axios
-        .post("http://localhost:3001/refresh", {
+        .post(`${SERVER}/refresh`, {
           refreshToken,
         })
         .then((res) => {

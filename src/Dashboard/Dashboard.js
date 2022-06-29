@@ -14,7 +14,7 @@ import { setTurnServers } from "../utils/webRTC/TURN";
 const Dashboard = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
-
+  console.log(location.state);
   const dashboardState = useSelector((state) => state.dashboardReducer);
   const callState = useSelector((state) => state.groupcallReducer);
   let customStyle = {
