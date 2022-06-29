@@ -4,7 +4,8 @@ import * as dashboardActions from "../../store/actions/dashboardActions";
 import * as webRTCGroupCallHandler from "../webRTC/webRTCGroupCallHandler";
 
 const SERVER_PORT = 3001;
-const SERVER = `http://localhost:${SERVER_PORT}`;
+const LOCAL_SERVER = `http://localhost:${SERVER_PORT}`;
+const SERVER = `https://quarantine-workstation-server.herokuapp.com/`
 
 const broadcastEventTypes = {
   ACTIVE_USERS: "ACTIVE_USERS",
