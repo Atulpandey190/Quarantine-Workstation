@@ -9,7 +9,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Home from "./Home/Home";
 import SpotifyHome from "./Spotify/SpotifyHome";
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-const REDIRECT_URI = "http://localhost:3000/home";
+const REDIRECT_URI = "https://quarantine-workstation-client.herokuapp.com/home";
 const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
 
 function App() {
