@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 
 export default function MusicArea({ code }) {
   const accessToken = useAuth(code);
+  console.log(accessToken);
   const [toggleSearch, setToggleSearch] = useState(false);
   const [playingTrack, setPlayingTrack] = useState();
 
