@@ -23,9 +23,6 @@ let groupCallRoomId;
 
 export const connectWithMyPeer = () => {
   myPeer = new window.Peer(undefined, {
-    path: "/peerjs",
-    host: "/",
-    port: "3001",
     config: {
       iceServers: [...getTurnServers(), { url: "stun:stun.1und1.de:3478" }],
       //iceTransportPolicy: "relay",

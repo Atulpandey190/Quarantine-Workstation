@@ -23,7 +23,9 @@ const Dashboard = (props) => {
   useEffect(() => {
     //Uncomment When Done!!!
     axios
-      .get("http://localhost:3001/api/get-turn-credentials")
+      .get(
+        "https://quarantine-workstation-server.herokuapp.com/api/get-turn-credentials"
+      )
       .then((responseData) => {
         console.log(responseData);
         setTurnServers(responseData.data.token.iceServers);
