@@ -5,7 +5,7 @@ const useAuth = (code) => {
   const [accessToken, setAccessToken] = useState();
   const [refreshToken, setRefreshToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
-  const SERVER = "https://quarantine-workstation-server.herokuapp.com/";
+  const SERVER = "https://quarantine-workstation-server.herokuapp.com";
   useEffect(() => {
     console.log("authenticating user", code);
     axios
